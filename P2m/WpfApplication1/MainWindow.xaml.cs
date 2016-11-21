@@ -99,7 +99,7 @@ namespace Server
 
     public static class Globals
     {
-        public static DirectoryInfo path = new DirectoryInfo("../../../");
+        public static DirectoryInfo path = new DirectoryInfo("../../../../");
         public static Process proc = new Process();
         public static string GApath = path.FullName + "GA\\ga-server-periodic.exe";
     }
