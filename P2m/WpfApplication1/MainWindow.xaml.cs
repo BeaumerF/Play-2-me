@@ -28,11 +28,12 @@ namespace Server
 
         public MainWindow()
         {
+            Globals.proc.EnableRaisingEvents = true;
+            Globals.proc.Exited += Process_Exited;
             InitializeComponent();
-            //Globals.proc.Exited += Process_Exited;
         }
 
-        public void retrieveInput_Click(object sender, RoutedEventArgs e)
+        public async void retrieveInput_Click(object sender, RoutedEventArgs e)
         {
             int linenb;
             string confpath = Globals.path.FullName + "GA\\config\\server.P2M.conf";
@@ -51,7 +52,8 @@ namespace Server
             //Globals.proc.StartInfo.UseShellExecute = false;
             //Globals.proc.StartInfo.CreateNoWindow = true;
             Globals.proc.Start();
-            System.Threading.Thread.Sleep(1000);
+            //System.Threading.Thread.Sleep(1000);
+            await Task.Delay(1000);
             if (Globals.proc.HasExited == true)
                 MessageBox.Show("Window not found");
             else
@@ -60,9 +62,9 @@ namespace Server
 
         private void Process_Exited(object sender, EventArgs e)
         {
-            Globals.proc.Exited -= Process_Exited;
-            MessageBox.Show("test");
-                img.Visibility = Visibility.Collapsed;
+            Application.Current.Dispatcher.BeginInvoke(
+                System.Windows.Threading.DispatcherPriority.Background,
+                new Action(() => img.Visibility = Visibility.Hidden));
 
         }
 
