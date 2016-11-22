@@ -15,24 +15,24 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Diagnostics;
 using System.ComponentModel;
+using MahApps.Metro.Controls;
+using MahApps.Metro;
 
 
 
 namespace Server
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
 
         public MainWindow()
         {
+            InitializeComponent();
             Globals.proc.EnableRaisingEvents = true;
             Globals.proc.Exited += Process_Exited;
-            InitializeComponent();
         }
 
+        //the OK button
         public async void retrieveInput_Click(object sender, RoutedEventArgs e)
         {
             int linenb;
@@ -49,25 +49,39 @@ namespace Server
                 Writer("#find-window-name = ", targetpath, confpath, linenb);
             Globals.proc.StartInfo.FileName = Globals.GApath;
             Globals.proc.StartInfo.Arguments = targetpath;
-            //Globals.proc.StartInfo.UseShellExecute = false;
-            //Globals.proc.StartInfo.CreateNoWindow = true;
+            Globals.proc.StartInfo.UseShellExecute = false;
+            Globals.proc.StartInfo.CreateNoWindow = true;
             Globals.proc.Start();
-            //System.Threading.Thread.Sleep(1000);
             await Task.Delay(1000);
             if (Globals.proc.HasExited == true)
                 MessageBox.Show("Window not found");
             else
-                img.Visibility = Visibility.Visible;
+            {
+                Application.Current.Dispatcher.BeginInvoke(
+                     System.Windows.Threading.DispatcherPriority.Background,
+                     new Action(() => ProgBar.IsIndeterminate = true));
+                Application.Current.Dispatcher.BeginInvoke(
+                    System.Windows.Threading.DispatcherPriority.Background,
+                    new Action(() => ProgBar.Visibility = Visibility.Visible));
+            }
         }
 
+        //Day 'n' Night to choose between light or dark theme
+        public void DnN_Click(object sender, RoutedEventArgs e)
+        {
+            Tuple<AppTheme, Accent> theme = ThemeManager.DetectAppStyle(Application.Current);
+            ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetInverseAppTheme(theme.Item1));
+        }
+
+        //if the stream is off, the progress bar disappears
         private void Process_Exited(object sender, EventArgs e)
         {
             Application.Current.Dispatcher.BeginInvoke(
                 System.Windows.Threading.DispatcherPriority.Background,
-                new Action(() => img.Visibility = Visibility.Hidden));
-
+                new Action(() => ProgBar.Visibility = Visibility.Collapsed));
         }
 
+        //write the new config file
         private static void Writer(string editline, string target, string source, int nbline)
         {
             string[] arrLine = File.ReadAllLines(source);
@@ -75,6 +89,7 @@ namespace Server
             File.WriteAllLines(target, arrLine);
         }
 
+        //need a config file example
         private static int conf_verif(string path)
         {
             StreamReader txt;
