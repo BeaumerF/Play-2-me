@@ -58,12 +58,19 @@ namespace Server
             else
             {
                 Application.Current.Dispatcher.BeginInvoke(
-                     System.Windows.Threading.DispatcherPriority.Background,
-                     new Action(() => ProgBar.IsIndeterminate = true));
-                Application.Current.Dispatcher.BeginInvoke(
                     System.Windows.Threading.DispatcherPriority.Background,
                     new Action(() => ProgBar.Visibility = Visibility.Visible));
+                Application.Current.Dispatcher.BeginInvoke(
+                    System.Windows.Threading.DispatcherPriority.Background,
+                    new Action(() => killInput.Visibility = Visibility.Visible));
             }
+        }
+
+        //kill child process, so the stream too
+        public void killInput_Click(object sender, RoutedEventArgs e)
+        {
+            if (Globals.proc.StartInfo.FileName == Globals.GApath && Globals.proc.HasExited == false)
+                Globals.proc.Kill();
         }
 
         //Day 'n' Night to choose between light or dark theme
@@ -73,12 +80,15 @@ namespace Server
             ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetInverseAppTheme(theme.Item1));
         }
 
-        //if the stream is off, the progress bar disappears
+        //if the stream is off, the progress bar and the button stop disappear
         private void Process_Exited(object sender, EventArgs e)
         {
             Application.Current.Dispatcher.BeginInvoke(
                 System.Windows.Threading.DispatcherPriority.Background,
-                new Action(() => ProgBar.Visibility = Visibility.Collapsed));
+                new Action(() => ProgBar.Visibility = Visibility.Hidden));
+            Application.Current.Dispatcher.BeginInvoke(
+                System.Windows.Threading.DispatcherPriority.Background,
+                new Action(() => killInput.Visibility = Visibility.Hidden));
         }
 
         //write the new config file

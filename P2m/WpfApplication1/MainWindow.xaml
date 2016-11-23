@@ -11,13 +11,15 @@
         Title="Play 2 me" Height="280" Width="290"
         ShowIconOnTitleBar="False"
         WindowStartupLocation="CenterScreen"
-        GlowBrush="{DynamicResource AccentColorBrush}">
+                      WindowTitleBrush="#00a9ae"
+        GlowBrush="#00a9ae">
     <Grid>
         <Image Name="img" Source="C:\Users\FrBea\Desktop\Play-2-me\P2m\img\logo.png" Margin="-64,-226,-60.8,-90.6" />
-        <TextBox Controls:TextBoxHelper.Watermark="Play 2 me" Controls:TextBoxHelper.ClearTextButton="True" Height="23" Width="200" Margin="-63,100,0,0" x:Name="inputText" Text="{Binding windowname}" />
+        <TextBox Controls:TextBoxHelper.Watermark="Example: Play 2 me" Controls:TextBoxHelper.ClearTextButton="True" Height="23" Width="200" Margin="-63,100,0,0" x:Name="inputText" Text="{Binding windowname}" />
         <Button Name="retrieveInput" Content="OK" Width="50" Margin="223,162,10.2,62.4" Click="retrieveInput_Click"/>
         <TextBlock Name="textBlock" Foreground="White" Margin="13,139,-2.8,73.4" TextWrapping="Wrap" FontSize="16" Text="Window name of the game" />
-        <Controls:MetroProgressBar Name="ProgBar" Margin="10,213,11.2,25.4" Height="Auto"  Minimum="0" Maximum="100" Foreground="{DynamicResource AccentColorBrush}" Visibility="Collapsed"/>
+        <Controls:MetroProgressBar Name="ProgBar" Margin="0,200,0.2,41.4" Height="9"  Minimum="0" Maximum="100" Foreground="#00a9ae" Visibility="Hidden" IsIndeterminate="true"/>
+        <Button Name="killInput" Content="STOP" FontSize="13" Margin="117,214,116.2,10.4" RenderTransformOrigin="0.503,0.428" Visibility="Hidden" Click="killInput_Click"/>
     </Grid>
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
@@ -35,32 +37,4 @@
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
-    <!--<Controls:MetroWindow.RightWindowCommands>
-        <Controls:WindowCommands>
-            <Button Name="Light" Click="Light_Click">
-                    <StackPanel Orientation="Horizontal">
-                    <Rectangle
-                   Width="20"
-                   Height="20"
-                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
-                        <Rectangle.OpacityMask>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_weather_sun_rise}" />
-                        </Rectangle.OpacityMask>
-                    </Rectangle>
-                </StackPanel>
-                </Button>
-            <Button Name="Dark" Click="Dark_Click">
-                    <StackPanel Orientation="Horizontal">
-                    <Rectangle
-                   Width="20"
-                   Height="20"
-                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
-                        <Rectangle.OpacityMask>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_weather_sun_set}" />
-                        </Rectangle.OpacityMask>
-                    </Rectangle>
-                </StackPanel>
-                </Button>
-        </Controls:WindowCommands>
-    </Controls:MetroWindow.RightWindowCommands>-->
 </Controls:MetroWindow>
