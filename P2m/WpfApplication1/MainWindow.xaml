@@ -4,7 +4,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:local="clr-namespace:WpfApplication1"
+                      xmlns:local="clr-namespace:Server"
                       mc:Ignorable="d"
                       ResizeMode="CanMinimize"
                       Icon="C:\Users\FrBea\Desktop\Play-2-me\P2m\img\server.ico"
