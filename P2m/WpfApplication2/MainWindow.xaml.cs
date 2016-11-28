@@ -7,7 +7,7 @@ using System.Windows.Threading;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
 
-namespace Client
+namespace Server
 {
     public partial class MainWindow : MetroWindow
     {
@@ -22,25 +22,23 @@ namespace Client
         public async void retrieveInput_Click(object sender, RoutedEventArgs e)
         {
             int linenb;
-            var confpath = Globals.path.FullName + "GA\\config\\server.P2M.conf";
-            var targetpath = Globals.path.FullName + "GA\\config\\P2M.conf";
+            var args = Globals.path.FullName + "GA\\blk\\bin.win64\\config\\client.abs.conf rtsp://" + inputText.Text + ":8554/desktop";
 
             if ((Globals.proc.StartInfo.FileName == Globals.GApath) && (Globals.proc.HasExited == false))
                 Globals.proc.Kill();
-            if ((linenb = conf_verif(confpath)) == -1)
+            if (string.IsNullOrEmpty(inputText.Text)) //can be changed to button = unavailable while string is null
+            {
+                MessageBox.Show("Please put an IP");
                 return;
-            if (!string.IsNullOrEmpty(inputText.Text))
-                Writer("find-window-name = " + inputText.Text, targetpath, confpath, linenb);
-            else
-                Writer("#find-window-name = ", targetpath, confpath, linenb);
+            }
             Globals.proc.StartInfo.FileName = Globals.GApath;
-            Globals.proc.StartInfo.Arguments = targetpath;
-            Globals.proc.StartInfo.UseShellExecute = false;
-            Globals.proc.StartInfo.CreateNoWindow = true;
+            Globals.proc.StartInfo.Arguments = args;
+            //Globals.proc.StartInfo.UseShellExecute = false;
+            //Globals.proc.StartInfo.CreateNoWindow = true;
             Globals.proc.Start();
             await Task.Delay(1000);
             if (Globals.proc.HasExited)
-                MessageBox.Show("Window not found");
+                MessageBox.Show("Stream not found");
             else
             {
                 Application.Current.Dispatcher.BeginInvoke(
@@ -76,44 +74,12 @@ namespace Client
                 DispatcherPriority.Background,
                 new Action(() => killInput.Visibility = Visibility.Hidden));
         }
-
-        //write the new config file
-        private static void Writer(string editline, string target, string source, int nbline)
-        {
-            var arrLine = File.ReadAllLines(source);
-            arrLine[nbline - 1] = editline;
-            File.WriteAllLines(target, arrLine);
-        }
-
-        //need a config file example
-        private static int conf_verif(string path)
-        {
-            StreamReader txt;
-            var line = "\0";
-            var i = 0;
-
-            if (File.Exists(path))
-            {
-                txt = new StreamReader(path);
-                while ((line != null) && !line.Contains("find-window-name = "))
-                {
-                    ++i;
-                    line = txt.ReadLine();
-                    if ((line != null) && line.Contains("find-window-name = "))
-                        return i;
-                }
-                MessageBox.Show("Config file Error");
-            }
-            else
-                MessageBox.Show("Could not find the config file");
-            return -1;
-        }
     }
 
     public static class Globals
     {
         public static DirectoryInfo path = new DirectoryInfo("../../../../");
         public static Process proc = new Process();
-        public static string GApath = path.FullName + "GA\\ga-server-periodic.exe";
+        public static string GApath = "ga-client.exe";
     }
 }

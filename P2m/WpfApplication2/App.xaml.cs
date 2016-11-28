@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Client
+namespace Server
 {
     public partial class App : Application
     {

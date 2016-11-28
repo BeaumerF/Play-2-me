@@ -22,8 +22,8 @@ namespace Server
         public async void retrieveInput_Click(object sender, RoutedEventArgs e)
         {
             int linenb;
-            var confpath = Globals.path.FullName + "GA\\config\\server.P2M.conf";
-            var targetpath = Globals.path.FullName + "GA\\config\\P2M.conf";
+            var confpath = Globals.path.FullName + "GA\\blk\\bin.win64\\config\\server.P2M.conf";
+            var targetpath = Globals.path.FullName + "GA\\blk\\bin.win64\\config\\P2M.conf";
 
             if ((Globals.proc.StartInfo.FileName == Globals.GApath) && (Globals.proc.HasExited == false))
                 Globals.proc.Kill();
@@ -114,6 +114,6 @@ namespace Server
     {
         public static DirectoryInfo path = new DirectoryInfo("../../../../");
         public static Process proc = new Process();
-        public static string GApath = path.FullName + "GA\\ga-server-periodic.exe";
+        public static string GApath = path.FullName + "GA\\blk\\bin.win64\\ga-server-periodic.exe";
     }
 }

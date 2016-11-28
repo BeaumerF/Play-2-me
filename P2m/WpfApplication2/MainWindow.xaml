@@ -1,10 +1,10 @@
-﻿<Controls:MetroWindow x:Class="Client.MainWindow"
+﻿<Controls:MetroWindow x:Class="Server.MainWindow"
                       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:local="clr-namespace:Client"
+                      xmlns:local="clr-namespace:Server"
                       mc:Ignorable="d"
                       ResizeMode="CanMinimize"
                       Icon="C:\Users\FrBea\Desktop\Play-2-me\P2m\img\client.ico"
@@ -20,12 +20,12 @@
         </Grid.RowDefinitions>
         <Image Name="img" Source="C:\Users\FrBea\Desktop\Play-2-me\P2m\img\logo.png" Margin="0,0,0.2,116.4"
                RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" />
+        <TextBlock Name="textBlock" FontFamily="Microsoft YaHei Light" Foreground="#0BA59A" Margin="13,81.1,-2.8,73.4"
+                   TextWrapping="Wrap" FontSize="16" Text="IP adress of the host" Grid.Row="1" />
         <TextBox Controls:TextBoxHelper.Watermark="Example: 127.0.0.1" Controls:TextBoxHelper.ClearTextButton="True"
                  Width="200" Margin="10,104.4,73.2,61.4" x:Name="inputText" Text="{Binding windowname}" Grid.Row="1" />
         <Button Name="retrieveInput" Content="OK" Width="50" Margin="223,104.4,10.2,61.4" Click="retrieveInput_Click"
                 Grid.Row="1" />
-        <TextBlock Name="textBlock" FontFamily="Microsoft YaHei Light" Foreground="#0BA59A" Margin="13,81.1,-2.8,73.4"
-                   TextWrapping="Wrap" FontSize="16" Text="IP adress of the host" Grid.Row="1" />
         <Controls:MetroProgressBar Name="ProgBar" Margin="0,142.1,0.2,41.4" Height="9" Minimum="0" Maximum="100"
                                    Foreground="#09877E" Visibility="Hidden" IsIndeterminate="true" Grid.Row="1" />
         <Button Name="killInput" Content="STOP" FontSize="13" Margin="117,156.1,116.2,10.4"
