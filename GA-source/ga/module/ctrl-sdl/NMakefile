@@ -1,8 +1,0 @@
-
-!include <..\NMakefile.common>
-
-OBJS	= ctrl-sdl.obj
-TARGET	= ctrl-sdl.$(EXT)
-
-!include <..\NMakefile.build>
-

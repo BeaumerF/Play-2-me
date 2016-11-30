@@ -1,8 +1,0 @@
-
-!include <..\NMakefile.common>
-
-OBJS	= encoder-video.obj
-TARGET	= encoder-video.$(EXT)
-
-!include <..\NMakefile.build>
-

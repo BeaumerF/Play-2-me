@@ -1,8 +1,0 @@
-
-!include <..\NMakefile.common>
-
-OBJS	= filter-rgb2yuv.obj
-TARGET	= filter-rgb2yuv.$(EXT)
-
-!include <..\NMakefile.build>
-
