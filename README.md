@@ -1,6 +1,8 @@
 # Play-2-me
 Software to play online to multiplayer offline games
 
+![Logo](https://github.com/BeaumerF/Play-2-me/blob/master/P2m/Client/img/logo.png)
+
 ## Install
 Download the latest release [here](https://github.com/BeaumerF/Play-2-me/releases/download/v0.1-alpha/Play.2.me.rar)
 
