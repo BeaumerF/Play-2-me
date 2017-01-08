@@ -2,11 +2,11 @@
 Software to play online to multiplayer offline games
 
 ## What does it use?
-.NET Framework 4.6.2
-WPF
-XAML
-[MahApps](https://github.com/MahApps/MahApps.Metro)
-[GamingAnywhere](https://github.com/chunying/gaminganywhere)
+ - .NET Framework 4.6.2
+ - WPF
+ - XAML
+ - [MahApps](https://github.com/MahApps/MahApps.Metro)
+ - [GamingAnywhere](https://github.com/chunying/gaminganywhere)
 
 ## How to run ?
  - Only Windows 7+ is supported (32 and 64 Bits).
