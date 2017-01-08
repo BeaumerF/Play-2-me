@@ -1,12 +1,20 @@
 # Play-2-me
 Software to play online to multiplayer offline games
 
+## Install
+Download the latest release [here](https://github.com/BeaumerF/Play-2-me/releases/download/v0.1-alpha/Play.2.me.rar)
+
 ## What does it use?
  - .NET Framework 4.6.2
- - WPF
+ - C#
  - XAML
+ - WPF
  - [MahApps](https://github.com/MahApps/MahApps.Metro)
  - [GamingAnywhere](https://github.com/chunying/gaminganywhere)
+ 
+## Why this project ?
+At the time I did this software, I was a student who only knew the imperative programming with the C lang (That's why I have unfortunately not used OOP). Interested in Microsoft technologies, I wanted to learn C# with a first project, this one.
+Otherwise, I wanted to allow the distant people to play despite the distance.
 
 ## How to run ?
  - Only Windows 7+ is supported (32 and 64 Bits).
@@ -25,6 +33,3 @@ Of course ! By hitting the :star: button !
 
 ## License
 [SNCL](./LICENSE)
-
-## Installer
-Download the release [here](https://github.com/bbougot/Popcorn/releases/download/1.3.0/Setup.exe)
