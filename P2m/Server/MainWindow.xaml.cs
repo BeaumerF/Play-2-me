@@ -36,8 +36,8 @@ namespace Server
         public async void retrieveInput_Click(object sender, RoutedEventArgs e)
         {
             int linenb;
-            var confpath = Globals.path.FullName + "GA\\config\\server.P2M.conf";
-            var targetpath = Globals.path.FullName + "GA\\config\\P2M.conf";
+            var confpath = Globals.path + "GA\\config\\server.P2M.conf";
+            var targetpath = Globals.path + "GA\\config\\P2M.conf";
 
             if ((Globals.proc.StartInfo.FileName == Globals.GApath) && (Globals.proc.HasExited == false))
                 Globals.proc.Kill();
@@ -133,8 +133,8 @@ namespace Server
 
     public static class Globals
     {
-        public static DirectoryInfo path = new DirectoryInfo("../../../../");
+        public static string path = "..\\..\\..\\..\\";
         public static Process proc = new Process();
-        public static string GApath = path.FullName + "GA\\ga-server-periodic.exe";
+        public static string GApath = path + "GA\\ga-server-periodic.exe";
     }
 }
