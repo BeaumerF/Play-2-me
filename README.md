@@ -29,8 +29,8 @@ Of course ! By hitting the :star: button !
 
 ## To do
 - [ ] Make docs (readme, how to use it)
-- [ ] Add list of opened windows
 - [ ] Clean XAML
+- [x] Add list of opened windows
 - [x] Design
 
 ## License
