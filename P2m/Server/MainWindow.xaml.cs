@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Threading;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
+using System.Windows.Controls;
 
 namespace Server
 {
@@ -16,6 +17,19 @@ namespace Server
             InitializeComponent();
             Globals.proc.EnableRaisingEvents = true;
             Globals.proc.Exited += Process_Exited;
+        }
+
+        //SearchButton
+        public async void searchInput_Click(object sender, RoutedEventArgs e)
+        {
+            Process[] processlist = Process.GetProcesses();
+            string _list = "";
+            foreach (Process process in processlist)
+            {
+                if (!String.IsNullOrEmpty(process.MainWindowTitle))
+                    _list += process.MainWindowTitle + '\n';
+            }
+            MessageBox.Show(_list);
         }
 
         //the OK button
@@ -49,6 +63,10 @@ namespace Server
                 Application.Current.Dispatcher.BeginInvoke(
                     DispatcherPriority.Background,
                     new Action(() => killInput.Visibility = Visibility.Visible));
+                Application.Current.Dispatcher.BeginInvoke(
+                    DispatcherPriority.Background,
+                    new Action(() => searchInput.Visibility = Visibility.Hidden));
+
             }
         }
 
@@ -75,6 +93,9 @@ namespace Server
             Application.Current.Dispatcher.BeginInvoke(
                 DispatcherPriority.Background,
                 new Action(() => killInput.Visibility = Visibility.Hidden));
+            Application.Current.Dispatcher.BeginInvoke(
+                DispatcherPriority.Background,
+                new Action(() => searchInput.Visibility = Visibility.Visible));
         }
 
         //write the new config file

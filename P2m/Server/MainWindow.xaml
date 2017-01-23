@@ -23,13 +23,15 @@
         <TextBox Controls:TextBoxHelper.Watermark="Example: Play 2 me" Controls:TextBoxHelper.ClearTextButton="True"
                  Width="200" Margin="10,104.4,73.2,61.4" x:Name="inputText" Text="{Binding windowname}" Grid.Row="1" />
         <Button Name="retrieveInput" Content="OK" Width="50" Margin="223,104.4,10.2,61.4" Click="retrieveInput_Click"
-                Grid.Row="1" />
+                Grid.Row="1"  IsDefault="{Binding ElementName=inputText, Path=IsKeyboardFocused}"/>
         <TextBlock Name="textBlock" FontFamily="Microsoft YaHei Light" Foreground="#0BA59A" Margin="13,81.1,-2.8,73.4"
                    TextWrapping="Wrap" FontSize="16" Text="Window name of the game" Grid.Row="1" />
         <Controls:MetroProgressBar Name="ProgBar" Margin="0,142.1,0.2,41.4" Height="9" Minimum="0" Maximum="100"
                                    Foreground="#09877E" Visibility="Hidden" IsIndeterminate="true" Grid.Row="1" />
         <Button Name="killInput" Content="STOP" FontSize="13" Margin="117,156.1,116.2,10.4"
                 RenderTransformOrigin="0.503,0.428" Visibility="Hidden" Click="killInput_Click" Grid.Row="1" />
+        <Button x:Name="searchInput" Content="List of open windows" FontSize="13" Margin="13,156,10.667,10"
+            RenderTransformOrigin="0.503,0.428" Visibility="Visible" Click="searchInput_Click" Grid.Row="1" />
     </Grid>
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
