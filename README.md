@@ -1,5 +1,6 @@
 # Play-2-me
-Software to play online to multiplayer offline games
+Allowing people to play despite of the distance.
+Software to play online on local multiplayer games by sharing the inputs and the window of the game between 2 players.
 
 ![Logo](https://github.com/BeaumerF/Play-2-me/blob/master/P2m/Client/img/logo.png)
 
