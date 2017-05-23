@@ -18,7 +18,7 @@ Download the latest release [here](https://github.com/BeaumerF/Play-2-me/release
  - [GamingAnywhere](https://github.com/chunying/gaminganywhere)
  
 ## Why this project ?
-At the time I did this software, I was a student who only knew the imperative programming with the C lang (That's why I have unfortunately not used OOP). Interested in Microsoft technologies, I wanted to learn C# with a first project, this one.
+Interested in Microsoft technologies, I wanted to learn C# with a first project, this one.
 Otherwise, I wanted to allow the distant people to play despite the distance.
 
 ## How to run ?
